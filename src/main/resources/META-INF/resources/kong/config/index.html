@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <!-- 必须的 meta 标签 -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="static/lib/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="static/lib/bootstrap-5.1.3-dist/css/docs.css">
+<link rel="stylesheet" type="text/css" href="static/lib/Font-Awesome-3.2.1/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="static/lib/jquery-jbox/jBox.css">
+<link rel="stylesheet" type="text/css" href="static/lib/jquery-jbox/themes/NoticeFancy.css">
+<link rel="stylesheet" type="text/css" href="static/lib/jquery-jbox/plugins/Notice/jBox.Notice.css">
+<link rel="stylesheet" type="text/css" href="static/lib/jquery-jbox/Playground.Avatars.css">
+
+
+<script type="text/javascript" src="static/lib/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="static/lib/bootstrap-5.1.3-dist/js/docs.min.js"></script>
+<script type="text/javascript" src="static/lib/jquery-jbox/jBox.min.js"></script>
+<script type="text/javascript" src="static/lib/jquery-jbox/plugins/Notice/jBox.Notice.min.js"></script>
+
+<script type="text/javascript" src="static/index.js"></script>
+
+
+<style>
+
+
+.node-active {
+color:rgba(0,0,0,0.85);
+background-color:rgba(121,82,179,0.1);
+box-shadow:0 0 0 1px rgba(121,82,179,0.4);
+}
+.node:focus{
+box-shadow:0 0 0 1px rgba(121,82,179,0.7)
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <h2 class="ms-5 text-light"><i>ZOOKEEPER</i>&nbsp;配置中心</h2>
+  </div>
+  </nav>
+  <div class="container-xxl  my-md-4 bd-layout ">
+     <aside class="bd-sidebar"> 
+      <nav class=" bd-links" id="bd-docs-nav" aria-label="Docs navigation">
+      <ul class="list-unstyled ">
+      	<li class="mb-1" id="rootNav">
+        </li>
+      </ul>
+     </nav>
+     </aside> 
+     
+     <form role="form">
+		<p style="font-size: 18px">当前节点路径为:<span style="margin-left:7px" id="currentPath" value="/">/</span></p>
+		<div class="form-group" style="margin-top: 10px">
+			<textarea class="form-control" rows="3" style="height: 300px" id="currentValue"  placeholder="添加value值" value=""></textarea>
+		</div>
+		 <div class="btn-group" role="group" aria-label="Basic example" style="margin-top: 10px; float: right;">
+  			<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">添加节点</button> 
+  			<button type="button" class="btn btn-warning" onclick="updateNode()">更新节点</button>
+  			<button type="button" class="btn btn-danger" onclick="deleteNode()">删除节点</button>
+	     </div>
+	 </form>
+    
+   </div>
+   
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">添加节点</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">路径:</label>
+            <input type="text" class="form-control" id="nextPath" placeholder="添加当前节点的下级路径key,不可以为空">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">值:</label>
+            <textarea class="form-control" id="nextValue" placeholder="添加当前节点的下级路径value,可以为空"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" onclick="addNode()">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+</body>
+</html>
