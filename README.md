@@ -38,6 +38,9 @@ public class ConfigProperties {
 ```
 5.访问配置中心  http://项目地址/kong/config, 添加对应的动态参数。注意：配置中心与参数分级对应关系，例如 test.name 配置中心则为 /test/name 。配置中心为目录索引格式
 
+![Alt text](https://github.com/jianym/meditate-static/img/kong-config-view.png)
+
+
 6.启动项目，当添加或更新配置中心参数时，会同步到项目中并动态刷新 refreshScope 下的参数
 
 # 扩展
