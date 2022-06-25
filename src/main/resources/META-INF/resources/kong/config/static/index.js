@@ -21,24 +21,33 @@ function query(){
 }
 
 function queryNode(node){
+	var id = $(node).attr("id");
+	var value = $(node).attr("value");
+	$("#currentValue").removeAttr("readonly");
+	$("#currentValue").val(value);
 	var tmpleaf =  $(node).attr("leaf");
 	if(tmpleaf != undefined && tmpleaf != null ){
 		leaf = tmpleaf;
 	} else {
 		leaf = 0;
+		$("#currentValue").attr("readonly","readonly");
 	}
-	var id = $(node).attr("id");
-	var value = $(node).attr("value");
 	$("#rootNav a").removeClass("active node-active");
 	$(node).addClass("active node-active");
 	$("#currentPath").text(id);
 	$("#currentPath").attr("value",id);
-    $("#currentValue").val(value);
 }
 
 function addNode(){
+	var value = $("#currentValue").val();
+	if(value != undefined && value != null && value != ""){
+		errorNotice("叶子节点不能添加子节点，清空当前值更新后重试");
+		return;
+	}
 	var parentPath = $("#currentPath").attr("value");
 	var path =parentPath + "/" + $("#nextPath").val();
+	if(parentPath == "/")
+	    path = parentPath + $("#nextPath").val();
     var value = $("#nextValue").val();
 	 $.ajax({
 	  	  type: "POST",
@@ -59,6 +68,10 @@ function addNode(){
 }
 
 function updateNode(){
+	if(leaf != 1){
+		errorNotice("非叶子节点不能更新");
+		return;
+	}
 	var path = $("#currentPath").attr("value");
     var value = $("#currentValue").val();
     $.ajax({

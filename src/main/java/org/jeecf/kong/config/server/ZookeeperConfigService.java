@@ -77,7 +77,12 @@ public class ZookeeperConfigService implements ConfigInfoServer {
     @Override
     public String add(String path, String value) throws Exception {
         CuratorFramework curator = ZkClient.getSingleCuratorFramework(properties.getZookeeper());
+        byte[] oldValue = ZkClient.get(curator, path);
+        if(oldValue != null && oldValue.length > 0) {
+            throw new RuntimeException("叶子节点不能添加子节点");
+        }
         ZkClient.create(curator, CreateMode.PERSISTENT, path, value.getBytes());
+        zkListener.load(path, curator);
         return path;
     }
 
@@ -90,6 +95,10 @@ public class ZookeeperConfigService implements ConfigInfoServer {
     @Override
     public String update(String path, String value) throws Exception {
         CuratorFramework curator = ZkClient.getSingleCuratorFramework(properties.getZookeeper());
+        List<String> childrens = ZkClient.children(curator, path);
+        if(CollectionUtils.isNotEmpty(childrens)) {
+            throw new RuntimeException("索引节点不能更新");
+        }
         ZkClient.set(curator, path, value.getBytes());
         return path;
     }
