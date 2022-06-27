@@ -1,7 +1,15 @@
-# kong-config
+# 徽章
+[![license Status](https://img.shields.io/badge/License-Apache%202.0-blue.svg?branch=v2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 # 使用步骤
 1.使用maven依赖项目
 ``` 
+<!-- https://mvnrepository.com/artifact/org.jeecf/kong-config -->
+<dependency>
+    <groupId>org.jeecf</groupId>
+    <artifactId>kong-config</artifactId>
+    <version>1.0-RELEASE</version>
+</dependency>
+
 ```
 2.配置启动参数
 ``` 
