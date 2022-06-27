@@ -2,6 +2,13 @@
 # 使用步骤
 1.使用maven依赖项目
 ``` 
+<!-- https://mvnrepository.com/artifact/org.jeecf/kong-config -->
+<dependency>
+    <groupId>org.jeecf</groupId>
+    <artifactId>kong-config</artifactId>
+    <version>1.0-RELEASE</version>
+</dependency>
+
 ```
 2.配置启动参数
 ``` 
