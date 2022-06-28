@@ -1,5 +1,6 @@
 package org.jeecf.kong.config;
 
+import org.jeecf.common.lang.StringUtils;
 import org.jeecf.kong.config.server.DataSourceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -23,6 +24,9 @@ public class KongConfig implements ApplicationListener<ContextRefreshedEvent>, O
 
     @Autowired
     private DataSourceManager dataSourceManager;
+    
+    @Autowired
+    private KongConfigProperties properties;
 
     private volatile boolean isEntry = false;
 
@@ -38,6 +42,13 @@ public class KongConfig implements ApplicationListener<ContextRefreshedEvent>, O
             return;
         }
         try {
+            if(properties.getZookeeper() != null && StringUtils.isNotEmpty(properties.getZookeeper().getAddress())) {
+                dataSourceManager.setDataSource(DataSource.ZOOKEEPER.getCode());
+            } else if(properties.getEtcd() != null && StringUtils.isNotEmpty(properties.getEtcd().getAddress())){
+                dataSourceManager.setDataSource(DataSource.ETCD.getCode());
+            } else {
+                throw new RuntimeException("datasource is not exist");
+            }
             String[] beans = event.getApplicationContext().getBeanDefinitionNames();
             for (int i = 0; i < beans.length; i++) {
                 Object o = event.getApplicationContext().getBean(beans[i]);

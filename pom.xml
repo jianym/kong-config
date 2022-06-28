@@ -28,6 +28,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
+            <version>4.1.58.Final</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
@@ -116,6 +117,29 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.ibm.etcd/etcd-java -->
+        <dependency>
+            <groupId>com.ibm.etcd</groupId>
+            <artifactId>etcd-java</artifactId>
+            <version>0.0.20</version>
+            <exclusions>
+                <exclusion> <!-- we prefer our explicit version, though it should be the same -->
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.6-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -141,12 +165,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
-            
         </plugins>
     </build>
+
+
 </project>

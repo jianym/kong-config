@@ -48,6 +48,10 @@ function addNode(){
 	var path =parentPath + "/" + $("#nextPath").val();
 	if(parentPath == "/")
 	    path = parentPath + $("#nextPath").val();
+	if( $("#nextPath").val().indexOf("/") != -1){
+		errorNotice("路径不能包含/字符");
+		return;
+	}
     var value = $("#nextValue").val();
 	 $.ajax({
 	  	  type: "POST",

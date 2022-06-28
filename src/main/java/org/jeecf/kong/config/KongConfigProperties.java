@@ -20,4 +20,9 @@ public class KongConfigProperties {
      */
     private ZookeeperProperties zookeeper;
     
+    /**
+     * etcd配置
+     */
+    private EtcdProperties etcd;
+    
 }
