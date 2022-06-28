@@ -1,5 +1,9 @@
 # 徽章
 [![license Status](https://img.shields.io/badge/License-Apache%202.0-blue.svg?branch=v2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+# 2.0新增
+1.支持etcd接入
+
 # 使用步骤
 1.使用maven依赖项目
 ``` 
