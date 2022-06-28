@@ -20,4 +20,11 @@ public enum DataSource {
         return this.code;
     }
 
+    public static String getName(int code) {
+        if (code == 1)
+            return "zookeeper";
+        else if (code == 2)
+            return "etcd";
+        return null;
+    }
 }

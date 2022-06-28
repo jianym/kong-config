@@ -29,6 +29,10 @@ public class DataSourceManager implements ConfigInfoServer {
             this.dataSource = DataSource.ETCD.getCode();
     }
 
+    public String getDataSource() {
+        return DataSource.getName(this.dataSource);
+    }
+
     @Override
     public MultiConfigEntity query(String path) throws Exception {
         if (this.dataSource == DataSource.ZOOKEEPER.getCode()) {
@@ -44,7 +48,7 @@ public class DataSourceManager implements ConfigInfoServer {
         if (this.dataSource == DataSource.ZOOKEEPER.getCode()) {
             return zookeeperConfigService.add(path, value);
         } else if (this.dataSource == DataSource.ETCD.getCode()) {
-            return etcdConfigService.add(path,value);
+            return etcdConfigService.add(path, value);
         }
         return null;
     }

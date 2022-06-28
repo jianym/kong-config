@@ -10,9 +10,13 @@
     </parent>
 
     <artifactId>kong-config</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>2.0-RELEASE</version>
     <name>kong-config</name>
-
+    
+   <properties>
+        <netty.version>4.1.58.Final</netty.version>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,7 +32,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.58.Final</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
@@ -123,7 +126,7 @@
             <artifactId>etcd-java</artifactId>
             <version>0.0.20</version>
             <exclusions>
-                <exclusion> <!-- we prefer our explicit version, though it should be the same -->
+                <exclusion>
                     <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
                 </exclusion>

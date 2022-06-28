@@ -27,6 +27,16 @@ public class ConfigController {
     public String index() {
         return "redirect:/kong/config/index.html";
     }
+    
+    @RequestMapping({"datasource"})
+    @ResponseBody
+    public Response<String> datasource() {
+        Response<String> res = new Response<>();
+        res.setData(dataSource.getDataSource());
+        res.setSuccess(true);
+        res.setErrorCode(200);
+        return res;
+    }
 
     @PostMapping(value = "query")
     @ResponseBody
