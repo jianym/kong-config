@@ -8,7 +8,7 @@ package org.jeecf.kong.config;
  */
 public enum DataSource {
 
-    ZOOKEEPER(1);
+    ZOOKEEPER(1), ETCD(2);
 
     private int code;
 
