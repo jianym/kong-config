@@ -19,6 +19,14 @@ kong:
          address: localhost:2181
          namespace: jym
 ```
+etcd配置
+``` 
+kong:
+   config:
+      etcd:
+         address: localhost:2379
+         namespace: jym
+```
 3.启动配置
 ``` 
 @SpringBootApplication
