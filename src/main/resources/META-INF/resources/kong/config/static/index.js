@@ -16,6 +16,8 @@ function query(){
   	 var data =  msg["data"];
   	 var childrens = data["childrens"] ;
   	 buildNodeTree(data,"rootNav");
+     $("#currentValue").attr("readonly","readonly");
+
   	}  
   });
 	
@@ -146,7 +148,8 @@ function buildNodeTree(data,id){
 		 if(id == "rootNav"){
 			 $("#rootNav").append('<a href="#" class="bd-links-link d-inline-block rounded node active node-active" style="font-size:18px" onclick="queryNode(this)" id="'+data["rootPath"]+ '" value="'+data["value"]+'">/</a>');
 			 $("#"+id).append(' <ul class="list-unstyled fw-normal pd-2" id="'+rootPath+'Nav">');
-
+			 $("#currentValue").val(data["value"]);
+			 $("#currentPath").text(data["rootPath"]);
 		 } else {
 			 $("#"+id).append('<li><a  href="#" class="bd-links-link d-inline-block rounded node " style="font-size:18px" onclick="queryNode(this)" id="'+data["rootPath"]+ '" value="'+data["value"]+'"><i class=" icon-angle-right icon-large"></i>&nbsp;'+data["path"]+'</a>');
 			 $("#"+id).append(' <ul class="list-unstyled fw-normal ms-3" id="'+rootPath+'Nav">');

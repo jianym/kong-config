@@ -31,8 +31,8 @@ public class EtcdConfigService implements ConfigInfoServer {
 
     @Override
     public MultiConfigEntity query(String path) throws Exception {
-        if (StringUtils.isEmpty(path)) {
-            path = "/";
+        if (StringUtils.isEmpty(path) || path.equals("/")) {
+            path = EdClient.getNamespace();
         }
         RangeResponse res = EdClient.getInstance(properties.getEtcd()).getAsPrefix(path);
         MultiConfigEntity root = new MultiConfigEntity();
@@ -58,6 +58,10 @@ public class EtcdConfigService implements ConfigInfoServer {
         for (KeyValue kv : kvList) {
             String childKey = kv.getKey().toStringUtf8();
             String childValue = kv.getValue().toStringUtf8();
+            if(childKey.equals(EdClient.getNamespace())) {
+                rootEntity.setValue(childValue);
+                continue;
+            }
             int parentIndex = childKey.lastIndexOf("/");
             String parentKey = childKey.substring(0, parentIndex);
             MultiConfigEntity parentEntity = entityMap.get(parentKey);
