@@ -18,6 +18,19 @@ function query(){
   	 buildNodeTree(data,"rootNav");
   	}  
   });
+	
+	$.ajax({
+	  	  type: "POST",
+	  	  url: "datasource",
+	  	  data:{},
+	  	  dataType: "json",
+	  	  contentType:'application/json'
+	  	}
+	  ).done(function( msg ) {
+	  	if(msg["success"]){
+	  		$("#datasource").text(msg["data"]);
+	  	}  
+	  });
 }
 
 function queryNode(node){
