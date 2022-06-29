@@ -35,7 +35,5 @@ public class MultiConfigEntity {
      * 父节点路径
      */
     private String parent;
-    
-
 
 }
