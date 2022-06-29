@@ -2,9 +2,15 @@ package org.jeecf.kong.config;
 
 import lombok.Data;
 
+/**
+ * etcd 配置信息
+ * 
+ * @author jianyiming
+ *
+ */
 @Data
 public class EtcdProperties {
-    
+
     /**
      * 地址
      */
