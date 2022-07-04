@@ -11,7 +11,7 @@
 <dependency>
     <groupId>org.jeecf</groupId>
     <artifactId>kong-config</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>2.0-RELEASE</version>
 </dependency>
 
 ```
